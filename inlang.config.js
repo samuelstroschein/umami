@@ -10,7 +10,7 @@ export async function defineConfig(env) {
     };
 
     return {
-        referenceLanguage: "en",
+        referenceLanguage: "en-US",
         languages: await getLanguages(env),
         readResources: (args) =>
             plugin.readResources({ ...args, ...env, pluginConfig }),
@@ -23,7 +23,6 @@ export async function defineConfig(env) {
  * Automatically derives the languages in this repository.
  */
 async function getLanguages(env) {
-    // replace the path
     const files = await env.$fs.readdir("./lang");
     // files that end with .json
     // remove the .json extension to only get language name
